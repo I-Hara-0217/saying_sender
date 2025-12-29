@@ -15,7 +15,7 @@ class QuotesSubscriber(Node):
             self.listener_callback,
             10)
 
-        def listener_callback(self, msg):
+    def listener_callback(self, msg):
         self.get_logger().info(f'Received: "{msg.data}"')
 
 def main(args=None):
