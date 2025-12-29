@@ -4,15 +4,12 @@
 
 import os
 import random
-
 import rclpy
 from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from std_msgs.msg import String
 
-
 class QuotesPublisher(Node):
-
     def __init__(self):
         super().__init__('quotes_publisher')
         self.publisher_ = self.create_publisher(String, 'quote_topic', 10)
@@ -21,7 +18,7 @@ class QuotesPublisher(Node):
     def timer_callback(self):
         msg = String()
         if random.randint(1, 99) == 99:
-            msg.data = '【大当たり】今日はとても良いことがありそうです！'
+            msg.data = "【大当たり】今日はとても良いことがありそうです！"
         else:
             file_path = os.path.expanduser('~/ros2_ws/src/saying_sender/words.txt')
             try:
@@ -30,13 +27,11 @@ class QuotesPublisher(Node):
                     if lines:
                         msg.data = random.choice(lines).strip()
                     else:
-                        msg.data = 'words.txt is empty'
+                        msg.data = "words.txt is empty"
             except FileNotFoundError:
-                msg.data = 'words.txt not found'
-
+                msg.data = "words.txt not found"
         self.publisher_.publish(msg)
         self.get_logger().info(f'Publish: "{msg.data}"')
-
 
 def main(args=None):
     rclpy.init(args=args)
@@ -49,7 +44,6 @@ def main(args=None):
         if rclpy.ok():
             node.destroy_node()
             rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()
