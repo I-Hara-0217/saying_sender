@@ -39,3 +39,22 @@ class QuotesPublisher(Node):
         self.publisher_.publish(msg)
         # ログに出力
         self.get_logger().info(f'Publish: "{msg.data}"')
+
+    def main(args=None):
+    # ROS 2 の通信機能を初期化
+    rclpy.init(args=args)
+    # QuotesPublisher のインスタンスを作成
+    node = QuotesPublisher()
+    try:
+        # ノードをスピン（実行状態を維持）させてタイマーを動かす
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        # Ctrl+C で停止した際の処理
+        pass
+
+    # ノードを破棄して終了処理を行う
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
