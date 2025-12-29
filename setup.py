@@ -24,8 +24,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'quotes_publisher = robosys2025_2.quotes_publisher:main',
-            'quotes_subscriber = robosys2025_2.quotes_subscriber:main',
+            'quotes_publisher = saying_sender.quotes_publisher:main',
+            'quotes_subscriber = saying_sender.quotes_subscriber:main',
         ],
     },
 )
