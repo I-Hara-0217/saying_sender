@@ -1,22 +1,18 @@
 # saying_sender
 [![test](https://github.com/I-Hara-0217/saying_sender/actions/workflows/test.yml/badge.svg)](https://github.com/I-Hara-0217/saying_sender/actions/workflows/test.yml)
 
-本パッケージは、ロボットの起動時におけるステータス通知や挨拶を想定した、シングルノード構成のパブリッシャーです。
+ROS 2ノードの起動時に、外部のテキストファイルからランダムにメッセージを選択し、パブリッシュするパッケージです。
 
-## 準備
+## 概要
+本パッケージは、ロボットの起動時におけるステータス通知や挨拶を想定したパブリッシャーです。
 
-以下の手順で、ワークスペースへのクローンとビルドを行ってください。
-
-```
-$ cd ~/ros2_ws/src
-$ git clone https://github.com/I-Hara-0217/saying_sender.git
-$ cd ~/ros2_ws
-$ colcon build
-$ source ~/.bashrc
-```
+## ノードとトピック
+### quotes_publisher
+起動時に一度だけ、以下のトピックへメッセージを送信します。
+* **パブリッシュ先**: `quote_topic` [std_msgs/String]
+  * 内容: `words.txt` から選ばれた一言を送信します。
 
 ## 実行方法
-
 ターミナルで以下のコマンドを実行します。words.txt内のリストから一言が選択され、トピックへパブリッシュされます。
 
 ```
@@ -25,7 +21,6 @@ $ ros2 run saying_sender quotes_publisher
 ```
 
 ## コンフィグレーション
-
 送信されるメッセージの内容は、以下のファイルを編集することでカスタマイズ可能です。
 - パス: ~/ros2_ws/src/saying_sender/words.txt
 - フォーマット: プレーンテキスト形式（一行につき一つのメッセージ）
