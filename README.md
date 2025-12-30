@@ -32,11 +32,11 @@ $ ros2 run saying_sender quotes_publisher
 
 ## 必用なソフトウェア
 - Python 
- - テスト済み: 3.12
- - 3.12以上
+    - テスト済み: 3.12
+    - 3.12以上
 
 - ROS 2
- - Jazzy Jalisco
+    - Jazzy Jalisco
 
 - Ubuntu 24.04.1 LTS
 
@@ -47,4 +47,4 @@ $ ros2 run saying_sender quotes_publisher
 
 ## 謝辞
 - このパッケージの構成や通信の仕組み、テスト方法は、千葉工業大学 ロボットシステム学(2025)の講義資料を参考にしています。
- - [ryuichiueda/slides_marp/robosys2025](https://github.com/ryuichiueda/slides_marp/tree/master/robosys2025)
+    - [ryuichiueda/slides_marp/robosys2025](https://github.com/ryuichiueda/slides_marp/tree/master/robosys2025)
