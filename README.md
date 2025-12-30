@@ -22,7 +22,7 @@ $ ros2 run saying_sender quotes_publisher
 
 ## コンフィグレーション
 送信されるメッセージの内容は、以下のファイルを編集することでカスタマイズ可能です。
-- パス: ~/ros2_ws/src/saying_sender/words.txt
+- パス: `~/ros2_ws/src/saying_sender/words.txt`
 - フォーマット: プレーンテキスト形式（一行につき一つのメッセージ）
 
 ## 必用なソフトウェア
