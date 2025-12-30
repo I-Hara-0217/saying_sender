@@ -12,14 +12,11 @@ res=0
 source /opt/ros/jazzy/setup.bash
 cd $HOME/ros2_ws
 
-### BUILD TEST ###
 colcon build --packages-select saying_sender || ng "$LINENO"
 source $HOME/ros2_ws/install/setup.bash
 
-### EXECUTION TEST ###
 timeout 10s ros2 run saying_sender quotes_publisher > /tmp/saying_sender.log 2>&1 || true
 
-### OUTPUT CHECK ###
 count=$(grep -c "Publish:" /tmp/saying_sender.log)
 [ "$count" -ge 1 ] || ng "$LINENO"
 

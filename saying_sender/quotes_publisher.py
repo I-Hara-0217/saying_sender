@@ -21,10 +21,7 @@ class QuotesPublisher(Node):
         try:
             with open(path, 'r', encoding='utf-8') as f:
                 lines = f.readlines()
-                if lines:
-                    msg.data = random.choice(lines).strip()
-                else:
-                    msg.data = 'File is empty'
+                msg.data = random.choice(lines).strip() if lines else 'File is empty'
         except FileNotFoundError:
             msg.data = 'File not found'
 
@@ -34,14 +31,12 @@ class QuotesPublisher(Node):
 def main(args=None):
     rclpy.init(args=args)
     node = QuotesPublisher()
+    
     try:
-        # Wait a moment to ensure the message is sent
+        # Ensure the message is sent to the middleware
         rclpy.spin_once(node, timeout_sec=1.0)
     except KeyboardInterrupt:
         pass
     finally:
         node.destroy_node()
         rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
